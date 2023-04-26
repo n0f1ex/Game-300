@@ -5,6 +5,7 @@ class Deck:
     def __init__(self):
         self.left = []
         self.multi = 0
+        self.shuf = False
 
     def reshuffle(self, taken, new=False):
         used = []
@@ -26,7 +27,11 @@ class Deck:
 
         shuffle(self.left)
 
-    def take_card(self):
+    def take_card(self, taken):
+        if len(self.left) == 0:
+            self.reshuffle(taken)
+            self.shuf = True
         return self.left.pop()
 
-
+    def end(self):
+        return self.multi

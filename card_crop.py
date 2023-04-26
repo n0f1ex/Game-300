@@ -1,13 +1,13 @@
 from PIL import Image
 import os
 
-img = Image.open(os.path.abspath('sprites/cards.png'))
-mast, card = ['C', 'B', 'K', 'P'], ['T', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K']
+img = Image.open(os.path.abspath('sprites/masti.png'))
+mast = ['P', 'C', 'B', 'K']
 width, height = img.size
-width //= 2.25
-height *= 2.25
+width = 600
+height = 600
 
-for i in range(4):
-    for j in range(13):
-        im_crop = img.crop((10+height*j//13, width*i//4, 10+height*(j+1)//13, width*(i+1)//4))
-        im_crop.save(os.path.abspath('sprites/' + mast[i] + card[j] + '.png'))
+for i in range(2):
+    for j in range(2):
+        im_crop = img.crop((i * height, j * width, i * height + height, j * width + width))
+        im_crop.save(os.path.abspath('sprites/' + mast[i + j * 2] + '.png'))

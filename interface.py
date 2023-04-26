@@ -27,7 +27,7 @@ class Card(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(pygame.image.load('sprites/' + self.card + '.png'), (49*self.resize, 71*self.resize))
 
     def on_hover(self, last, mouse):
-        if self.rect.collidepoint(mouse) and (list(last)[0] == list(self.card)[0] or list(last)[1] == list(self.card)[1]) and not self.hover:
+        if self.rect.collidepoint(mouse) and (list(last)[0] == list(self.card)[0] or list(last)[1] == list(self.card)[1] or list(self.card)[1] == 'Q') and not self.hover:
             self.rect[1] -= 10*self.resize
             self.hover = True
 
@@ -37,7 +37,7 @@ class Card(pygame.sprite.Sprite):
             self.hover = False
 
     def on_click(self, last, mouse):
-        if self.rect.collidepoint(mouse) and (list(last)[0] == list(self.card)[0] or list(last)[1] == list(self.card)[1]):
+        if self.rect.collidepoint(mouse) and (list(last)[0] == list(self.card)[0] or list(last)[1] == list(self.card)[1] or list(self.card)[1] == 'Q'):
             return self.card
         return -1
 

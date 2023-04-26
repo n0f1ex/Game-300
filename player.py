@@ -29,8 +29,8 @@ class Player:
         self.value -= self.cost[list(self.hand[num])[1]]
         return self.hand.pop(num)
 
-    def end(self):
-        self.awerall += self.value
+    def end(self, multi):
+        self.awerall += self.value * multi
         self.value = 0
         self.hand = []
         return self.awerall
@@ -55,7 +55,7 @@ class Bot(Player):
         available = [[], [], [], [], [], [], [], [], []]
         has_card = False
         for i in self.hand:
-            if list(i)[0] == m or list(i)[1] == c:
+            if list(i)[0] == m or list(i)[1] == c or list(i)[1] == 'Q':
                 available[priority.index(list(i)[1])].append(i)
                 has_card = True
         if has_card:
